@@ -20,10 +20,10 @@ class Comparator(tk.Frame):
         super().__init__()
         self.pack()
 
-        self.path0 = StringVar(value="/Users/bitsonli/Desktop/projects/data/脱发分类试标结果/结果1")
-        self.path1 = StringVar(value="/Users/bitsonli/Desktop/projects/data/脱发分类试标结果/结果2")
-        self.path2 = StringVar(value="/Users/bitsonli/Desktop/projects/data/脱发分类试标结果/图片")
-        self.path3 = StringVar(value="/Users/bitsonli/Desktop/projects/data/脱发分类试标结果")
+        self.path0 = StringVar(value="E:\data\同一组图片两份标注结果\脱发分类试标结果\结果1")
+        self.path1 = StringVar(value="E:\data\同一组图片两份标注结果\脱发分类试标结果\结果2")
+        self.path2 = StringVar(value="E:\data\同一组图片两份标注结果\脱发分类试标结果\图片")
+        self.path3 = StringVar(value="E:\data\同一组图片两份标注结果\脱发分类试标结果")
         self.alert_text = StringVar()
 
         # 两个按钮
@@ -84,6 +84,7 @@ class Comparator(tk.Frame):
         self.label.config(text="执行中...")
         self.label.config(bg="red")
 
+        self.counter = 0
         source_path0 = self.path0.get()
         source_path1 = self.path1.get()
         source_path2 = self.path2.get()

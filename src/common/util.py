@@ -89,7 +89,7 @@ def file2json(file_path):
     :param file_path:
     :return:
     """
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         json_item = json.load(f)
         return json_item
 
