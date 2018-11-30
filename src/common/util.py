@@ -9,7 +9,7 @@ from shutil import copyfile, rmtree
 
 def traverse_dir_iter(file_path):
     """
-    递归遍历目录，返回迭代器
+    递归遍历目录，迭代器
     :param file_path:
     :return:
     """
@@ -17,13 +17,26 @@ def traverse_dir_iter(file_path):
     for fi in files:
         fi_d = os.path.join(file_path, fi)
         if os.path.isdir(fi_d):
-            traverse_dir_iter(fi_d)
+            yield from traverse_dir_iter(fi_d)
         else:
-            yield os.path.join(file_path, fi_d)
+            tmp = os.path.join(file_path, fi_d)
+            yield tmp
+            # yield os.path.join(file_path, fi_d)
             # print(os.path.join(file_path, fi_d))
 
 
+def join_path(path1, path2):
+    return os.path.join(path1, path2)
+
+
+def get_rel_path(path, start):
+    rel_path = os.path.relpath(path, start)
+    return rel_path
+
+
 def replace_dir_path(file_path, dir_path):
+    # sub_path = os.path.relpath(file_path, dir_path)
+
     _, file_name = os.path.split(file_path)
     # _, filename = os.path.split(filepath_2)
     new_dir = os.path.join(dir_path, file_name)
@@ -46,15 +59,25 @@ def clear_dir(path):
     if os.path.exists(path):
         rmtree(path)
 
+
 def get_file_name_from_path(path):
     return os.path.basename(path)
+
 
 def get_result_dir(root_path):
     img_sub_dir_name = 'result'
     return os.path.join(root_path, img_sub_dir_name)
 
 
-def get_new_image_file_path(result_dir, json_dir_path, json_file_path, orig_path):
+def get_new_image_file_path(result_dir, rel_path, orig_path):
+    path = os.path.join(result_dir, rel_path)
+    path_pre, _ = os.path.splitext(path)
+    _, suffix = os.path.splitext(orig_path)
+    path = path_pre + suffix
+    return path
+
+
+def get_new_image_file_path2(result_dir, json_dir_path, json_file_path, orig_path):
     sub_path = os.path.relpath(json_file_path, json_dir_path)
     sub_path_text, file_extension = os.path.splitext(sub_path)
     # img_sub_dir_name = 'result'

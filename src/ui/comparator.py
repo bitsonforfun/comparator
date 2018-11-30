@@ -84,7 +84,7 @@ class Comparator(tk.Frame):
         self.btn4 = tk.Button(self.rowframe4, bg="blue", fg="red", text="按这里执行对比", command=self.btn4_click)
         self.btn4.pack(side=tk.RIGHT)
 
-        # self.btn4_click()
+        self.btn4_click()
 
     def btn0_click(self):
         dir_path = askdirectory()
@@ -116,7 +116,9 @@ class Comparator(tk.Frame):
 
         for file_path in util.traverse_dir_iter(source_path0):
             file_path1 = file_path
-            file_path2 = util.replace_dir_path(file_path, source_path1)
+            rel_path1 = util.get_rel_path(file_path1, source_path0)
+            file_path2 = util.join_path(source_path1, rel_path1)
+            # file_path2 = util.replace_dir_path(file_path, source_path1)
 
             if not self.result_path:
                 self.result_path = util.get_result_dir(dest_path)
@@ -129,17 +131,20 @@ class Comparator(tk.Frame):
 
             self.total_counter = self.total_counter + 1
             if not is_same:
+                print(file_path1)
                 self.text_result.insert(END, output_str + '\n')
 
                 self.invalid_counter = self.invalid_counter + 1
                 orig_img_path = util.get_orig_image_file_path(source_path2, source_path0, file_path)
-                new_img_path = util.get_new_image_file_path(self.result_path, source_path0, file_path, orig_img_path)
+                # new_img_path = util.get_new_image_file_path(self.result_path, source_path0, file_path, orig_img_path)
+                new_img_path = util.get_new_image_file_path(self.result_path, rel_path1, orig_img_path)
+
                 util.ensure_dir(new_img_path)
                 util.copy_file(orig_img_path, new_img_path)
-                # print(file_path1)
-                # print(orig_img_path)
-                # print(new_img_path)
-                # print()
+
+                print(orig_img_path)
+                print(new_img_path)
+                print()
 
         self.label.config(text="执行完毕，共有 %s 张，有 %s 张有标注差异" % (self.total_counter, self.invalid_counter))
         self.label.config(bg="#00FF00")
