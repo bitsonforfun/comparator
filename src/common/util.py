@@ -46,6 +46,8 @@ def clear_dir(path):
     if os.path.exists(path):
         rmtree(path)
 
+def get_file_name_from_path(path):
+    return os.path.basename(path)
 
 def get_result_dir(root_path):
     img_sub_dir_name = 'result'
