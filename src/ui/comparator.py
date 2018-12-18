@@ -58,9 +58,9 @@ class SexExtractorComponent(tk.Frame):
 
         if self.debug:
             if self.platform == 'mac':
-                self.path_input_0.set("/Users/bitsonli/Desktop/projects/data/性别分类结果")
-                self.path_pic_0.set("/Users/bitsonli/Desktop/projects/data/pic")
-                self.path_result_0.set("/Users/bitsonli/Desktop/projects/data/性别分类结果")
+                self.path_input_0.set("/Users/bitsonli/Desktop/projects/data/test/65岁-标注结果")
+                self.path_pic_0.set("/Users/bitsonli/Desktop/projects/data/test/65岁-图")
+                self.path_result_0.set("/Users/bitsonli/Desktop/projects/data/test/result")
             elif self.platform == 'win':
                 self.path_input_0.set("E:\data\性别分类标注结果2018.12.17\性别分类结果")
                 self.path_pic_0.set("E:\data\data")
@@ -69,21 +69,21 @@ class SexExtractorComponent(tk.Frame):
         # 文件夹选择上按钮
         self.rowframe0 = tk.Frame(self.mother)
         self.rowframe0.pack(fill='x')
-        self.btn0 = tk.Button(self.rowframe0, text='选择标注结果的目录', width=12, command=self.btn0_click)
+        self.btn0 = tk.Button(self.rowframe0, text='选择标注结果的目录', width=20, command=self.btn0_click)
         self.btn0.pack(side=tk.LEFT)
         self.entry0 = tk.Entry(self.rowframe0, width=40, textvariable=self.path_input_0)
         self.entry0.pack(side=LEFT)
 
         self.rowframe2 = tk.Frame(self.mother)
         self.rowframe2.pack(fill='x')
-        self.btn2 = tk.Button(self.rowframe2, text='选择图片目录', width=12, command=self.btn2_click)
+        self.btn2 = tk.Button(self.rowframe2, text='选择图片目录', width=20, command=self.btn2_click)
         self.btn2.pack(side=tk.LEFT)
         self.entry2 = tk.Entry(self.rowframe2, width=40, textvariable=self.path_pic_0)
         self.entry2.pack(side=LEFT)
 
         self.rowframe3 = tk.Frame(self.mother)
         self.rowframe3.pack(fill='x')
-        self.btn3 = tk.Button(self.rowframe3, text='选择输出结果目录', width=12, command=self.btn3_click)
+        self.btn3 = tk.Button(self.rowframe3, text='选择输出结果目录', width=20, command=self.btn3_click)
         self.btn3.pack(side=tk.LEFT)
         self.entry3 = tk.Entry(self.rowframe3, width=40, textvariable=self.path_result_0)
         self.entry3.pack(side=LEFT)
@@ -219,28 +219,28 @@ class ComparatorDistinctComponent(tk.Frame):
         # 文件夹选择上按钮
         self.rowframe0 = tk.Frame(self.mother)
         self.rowframe0.pack(fill='x')
-        self.btn0 = tk.Button(self.rowframe0, text='选择结果1的目录', width=12, command=self.btn0_click)
+        self.btn0 = tk.Button(self.rowframe0, text='选择结果1的目录', width=20, command=self.btn0_click)
         self.btn0.pack(side=tk.LEFT)
         self.entry0 = tk.Entry(self.rowframe0, width=40, textvariable=self.path_input_0)
         self.entry0.pack(side=LEFT)
 
         self.rowframe1 = tk.Frame(self.mother)
         self.rowframe1.pack(fill='x')
-        self.btn1 = tk.Button(self.rowframe1, text='选择结果2的目录', width=12, command=self.btn1_click)
+        self.btn1 = tk.Button(self.rowframe1, text='选择结果2的目录', width=20, command=self.btn1_click)
         self.btn1.pack(side=tk.LEFT)
         self.entry1 = tk.Entry(self.rowframe1, width=40, textvariable=self.path_input_1)
         self.entry1.pack(side=LEFT)
 
         self.rowframe2 = tk.Frame(self.mother)
         self.rowframe2.pack(fill='x')
-        self.btn2 = tk.Button(self.rowframe2, text='选择图片目录', width=12, command=self.btn2_click)
+        self.btn2 = tk.Button(self.rowframe2, text='选择图片目录', width=20, command=self.btn2_click)
         self.btn2.pack(side=tk.LEFT)
         self.entry2 = tk.Entry(self.rowframe2, width=40, textvariable=self.path_pic_0)
         self.entry2.pack(side=LEFT)
 
         self.rowframe3 = tk.Frame(self.mother)
         self.rowframe3.pack(fill='x')
-        self.btn3 = tk.Button(self.rowframe3, text='选择输出结果目录', width=12, command=self.btn3_click)
+        self.btn3 = tk.Button(self.rowframe3, text='选择输出结果目录', width=20, command=self.btn3_click)
         self.btn3.pack(side=tk.LEFT)
         self.entry3 = tk.Entry(self.rowframe3, width=40, textvariable=self.path_result_0)
         self.entry3.pack(side=LEFT)

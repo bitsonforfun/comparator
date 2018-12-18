@@ -3,6 +3,7 @@
 
 import os
 import json
+import glob
 
 from shutil import copyfile, rmtree
 
@@ -98,13 +99,13 @@ def get_orig_image_file_path(root_path, json_dir_path, json_file_path):
     try:
         sub_path = os.path.relpath(json_file_path, json_dir_path)
         sub_path_text, file_extension = os.path.splitext(sub_path)
-        img_path = os.path.join(root_path, sub_path_text + '.*')
+        # img_path = os.path.join(root_path, sub_path_text + '.*')
 
-        import glob
+        img_path_pre = os.path.join(root_path, sub_path_text)
+        img_path_pre = glob.escape(img_path_pre)
+        img_path = img_path_pre + '.*'
+
         li = glob.glob(img_path)
-
-        # path = 'myfolder/'
-        # for infile in glob.glob(img_path):
 
         return li[0]
     except:

@@ -63,6 +63,7 @@ class SexExtractor(Extractor):
                 return 'female', None
         except Exception as ex:
             print('file %s excetion raised' % self.file)
+            return None, None
 
 
 class JsonComparator(Comparator):
