@@ -13,7 +13,6 @@ from src.compare.comparator import JsonComparator, SexExtractor
 
 
 class MainFrame(tk.Frame):
-
     platform = 'mac'
 
     def __init__(self):
@@ -161,34 +160,7 @@ class SexExtractorComponent(tk.Frame):
                     self.processed_counter = self.processed_counter + 1
             else:
                 # 没有标注的文件需要输出来提示一下
-                self.text_result.insert(END,  output_str + '\n')
-
-
-
-            # self.text_result.config(value=self.total_counter)
-            #
-            # self.total_counter = self.total_counter + 1
-            # if not is_same:
-            #     print(file_path1)
-            #     self.text_result.insert(END, output_str + '\n')
-            #
-            #     self.invalid_counter = self.invalid_counter + 1
-            #     # source_path2 原图片的文件夹路径，用来获取根目录路径
-            #     # source_path0 json的文件夹路径，用来截取文件名
-            #     # file_path json文件的路径，用来截取文件名
-            #     orig_img_path = util.get_orig_image_file_path(source_path2, source_path0, file_path)
-            #     # new_img_path = util.get_new_image_file_path(self.result_path, source_path0, file_path, orig_img_path)
-            #     # result_path 目标图片的文件夹路径，用来组合成新图片的路径，除了文件后缀
-            #     # rel_path1 json 文件相对于输入目录的相对路径，即后半段路径，用来组合成新图片的路径，除了文件后缀
-            #     # orig_img_path 原图片文件路径，用来获取文件后缀
-            #     new_img_path = util.get_new_image_file_path(self.result_path, rel_path1, orig_img_path)
-            #
-            #     util.ensure_dir(new_img_path)
-            #     util.copy_file(orig_img_path, new_img_path)
-            #
-            #     print(orig_img_path)
-            #     print(new_img_path)
-            #     print()
+                self.text_result.insert(END, output_str + '\n')
 
         self.label.config(text="执行完毕，分析了 %s 个文件，复制了 %s 张图片" % (self.total_counter, self.processed_counter))
         self.label.config(bg="#00FF00")
