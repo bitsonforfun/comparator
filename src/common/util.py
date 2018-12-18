@@ -52,7 +52,10 @@ def ensure_dir(path):
 
 
 def copy_file(src_path, dest_path):
-    copyfile(src_path, dest_path)
+    try:
+        copyfile(src_path, dest_path)
+    except:
+        print('file %s not exist' % src_path)
 
 
 def clear_dir(path):
