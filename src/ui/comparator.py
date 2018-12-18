@@ -62,9 +62,9 @@ class SexExtractorComponent(tk.Frame):
                 self.path_pic_0.set("/Users/bitsonli/Desktop/projects/data/pic")
                 self.path_result_0.set("/Users/bitsonli/Desktop/projects/data/性别分类结果")
             elif self.platform == 'win':
-                self.path_input_0.set("E:\data\性别分类结果")
-                self.path_pic_0.set("E:\data\pic")
-                self.path_result_0.set("E:\data\性别分类结果")
+                self.path_input_0.set("E:\data\性别分类标注结果2018.12.17\性别分类结果")
+                self.path_pic_0.set("E:\data\data")
+                self.path_result_0.set("E:\data\性别分类标注结果2018.12.17\性别分类结果")
 
         # 文件夹选择上按钮
         self.rowframe0 = tk.Frame(self.mother)
@@ -120,7 +120,11 @@ class SexExtractorComponent(tk.Frame):
         self.label.config(text="执行中...")
         self.label.config(bg="red")
 
-        self.invalid_counter = 0
+        # 清理工作
+        self.text_result.delete('1.0', END)
+        self.result_path = None
+
+        self.processed_counter = 0
         self.total_counter = 0
 
         source_path0 = self.path_input_0.get()
@@ -161,6 +165,9 @@ class SexExtractorComponent(tk.Frame):
             else:
                 # 没有标注的文件需要输出来提示一下
                 self.text_result.insert(END, output_str + '\n')
+
+            if self.total_counter % 1000 == 0:
+                self.label.config(text="执行中，分析了 %s 个文件，复制了 %s 张图片" % (self.total_counter, self.processed_counter))
 
         self.label.config(text="执行完毕，分析了 %s 个文件，复制了 %s 张图片" % (self.total_counter, self.processed_counter))
         self.label.config(bg="#00FF00")
@@ -254,13 +261,6 @@ class ComparatorDistinctComponent(tk.Frame):
 
         # self.btn4_click()
 
-        ######################################################
-        #
-        #  男女分类
-        #
-        ######################################################
-        pass
-
     def btn0_click(self):
         dir_path = askdirectory()
         self.path_input_0.set(dir_path)
@@ -280,6 +280,7 @@ class ComparatorDistinctComponent(tk.Frame):
     def click_handler(self):
         self.label.config(text="执行中...")
         self.label.config(bg="red")
+        self.text_result.delete('1.0', END)
 
         self.invalid_counter = 0
         self.total_counter = 0
