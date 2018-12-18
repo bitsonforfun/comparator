@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-from src.ui.comparator import Comparator
+from src.ui.comparator import MainFrame
 
 if __name__ == '__main__':
-    Comparator().mainloop()
+    MainFrame().mainloop()
